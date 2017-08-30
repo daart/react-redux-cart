@@ -1,0 +1,25 @@
+.product_list {
+	padding: 15px;
+	border: 1px solid rgb(69, 69, 69);
+}
+
+.product_list > ul {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	list-style: none;
+	padding: 0;
+	align-items: end;
+}
+
+.product_info {
+	padding: 10px 5px;
+}
+
+.product_info > div {
+}
+
+.product_info span,
+.product_info button {
+	align-self: flex-end;
+}

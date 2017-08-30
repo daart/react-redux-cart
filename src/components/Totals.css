@@ -1,0 +1,8 @@
+.totals_wrapper {
+	border: 1px solid rgb(179, 0, 0);
+	padding: 10px;
+}
+
+.totals_wrapper > div {
+	margin-bottom: 10px;
+}
