@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-
-import { cartInc, cartDec } from '../actions';
 
 import CartItem from './CartItem';
 import Totals from './Totals';

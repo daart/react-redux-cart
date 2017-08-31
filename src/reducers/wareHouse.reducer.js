@@ -23,73 +23,77 @@ const productsByID = {
 export default (state = productsByID, action) => {
 	switch(action.type) {
 		case CART_ADD:
-			var { prodID } = action.payload;
-			var { qty } = action.payload.product;
+			{
+				let { prodID } = action.payload;
+				let { qty } = action.payload.product;
 
+				if(!state[prodID]) return state 
 
-			if(!state[prodID]) return state 
-
-			return {
-				...state,
-				[prodID]: {
-					...state[prodID], 
-					qty: state[prodID].qty - 1
-				} 
-			}
-
-		case CART_REMOVE:
-			var { id, qty } = action.payload.item;
-
-			console.log('warehouse : ', action.payload, ' ', 'qty : ', qty);
-			
-			if(!state[id]) return state 
-
-			return {
-				...state,
-				[id]: {
-					...state[id], 
-					qty: state[id].qty + qty
-				} 
-			}
-
-		case CART_INC:
-			var { id } = action.payload;
-			
-			if(!state[id]) return state 
-
-			return {
-				...state,
-				[id]: {
-					...state[id], 
-					qty: state[id].qty - 1
-				} 
-			}
-
-		case CART_DEC:
-			var { id } = action.payload;
-			
-			if(!state[id]) return state 
-
-			return {
-				...state,
-				[id]: {
-					...state[id], 
-					qty: state[id].qty + 1
-				} 
-			}
-			
-		case CART_CREATE_NEW:
-			var { price, qty, title } = action.payload.formData;
-
-			return {
-				...state,
-				[(Math.random() * 10).toPrecision(5)]: {
-					title,
-					qty,
-					price
+				return {
+					...state,
+					[prodID]: {
+						...state[prodID], 
+						qty: state[prodID].qty - 1
+					} 
 				}
 			}
+		case CART_REMOVE:
+			{
+				let { id, qty } = action.payload.item;
 
+				console.log('warehouse : ', action.payload, ' ', 'qty : ', qty);
+				
+				if(!state[id]) return state 
+
+				return {
+					...state,
+					[id]: {
+						...state[id], 
+						qty: state[id].qty + qty
+					} 
+				}
+			}
+		case CART_INC:
+			{
+				let { id } = action.payload;
+				
+				if(!state[id]) return state 
+
+				return {
+					...state,
+					[id]: {
+						...state[id], 
+						qty: state[id].qty - 1
+					} 
+				}
+			}
+		case CART_DEC:
+			{
+				let { id } = action.payload;
+				
+				if(!state[id]) return state 
+
+				return {
+					...state,
+					[id]: {
+						...state[id], 
+						qty: state[id].qty + 1
+					} 
+				}
+			}
+		case CART_CREATE_NEW:
+			{
+				let { price, qty, title } = action.payload.formData;
+
+				return {
+					...state,
+					[(Math.random() * 10).toPrecision(5)]: {
+						title,
+						qty, 
+						price
+					}
+				}
+			}
 		default:
 			return state;
 	}
