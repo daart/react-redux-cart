@@ -1,19 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import ProductList from './ProductList';
-import AddNewForm from './AddNewForm';
-import Cart from './Cart';
+import Main from './Main';
+import HeaderNav from './HeaderNav';
 
-class Root extends Component {
-	render() {
-		return (
-			<div className="l_wrapper">
-				<Cart />
-				<ProductList />
-				<AddNewForm />
-			</div>
-		)
-	}
+const Root = () => {
+	return (
+		<div className="l_wrapper">
+			<HeaderNav />
+			<Main />
+		</div>
+	);
 }
 
 export default Root;

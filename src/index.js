@@ -1,17 +1,27 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
- 
-import Root from './components/Root';
+import { BrowserRouter } from 'react-router-dom';
+import 'semantic-ui-css/semantic.min.css';
+
 import store from './store';
+import Root from './components/Root';
 
 const el = document.getElementById('root');
 
-window.store = store;
+// render(
+// 	<Provider 
+// 		store={store}
+// 	>
+// 		<Root />
+// 	</Provider>,
+// 	el
+// );
 
 render(
-	<Provider store={store}>
+	<BrowserRouter>
 		<Root />
-	</Provider>,
+	</BrowserRouter>,
 	el
-)
+);
+

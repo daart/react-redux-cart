@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
-import wareHouseReducer from './wareHouse.reducer';
-import cartReducer from './cart.reducer';
+import cart from './cart';
+import warehouse from './warehouse';
 
-const reducer = combineReducers({
-	productsByID: wareHouseReducer,
-	cart: cartReducer
+let reducer = combineReducers({
+	cart,
+	warehouse
 });
 
 export default reducer;
