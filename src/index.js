@@ -18,10 +18,14 @@ const el = document.getElementById('root');
 // 	el
 // );
 
+// window.store = store;
+
 render(
-	<BrowserRouter>
-		<Root />
-	</BrowserRouter>,
+	<Provider store={ store }> 
+		<BrowserRouter>
+			<Root />
+		</BrowserRouter>
+	</Provider>,
 	el
 );
 

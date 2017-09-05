@@ -3,14 +3,13 @@ import { Header, List, Container } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 
 let isActive = (match, location) => {
-	console.log('match: ', match, ' ', ' match.params: ', match );
 	return match;
 }
 
 const HeaderNav = () => {
 	return (
 		<Header>
-			<Container fluid>
+			<Container fluid >
 				<List>
 					<List.Item>
 						<List.Content> 
@@ -37,6 +36,5 @@ const HeaderNav = () => {
 		</Header>
 	);	
 }
-
 
 export default HeaderNav;

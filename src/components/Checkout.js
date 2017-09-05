@@ -1,11 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Table } from 'semantic-ui-react';
 
-const Checkout = () => {
+import CartItem from './CartItem';
+
+const Checkout = ({ warehouse, items }) => {
 	return (
 		<div>
-			<h2>Checkout!</h2>
+			<Table celled padded>
+				<Table.Body>
+
+					{ items.map(item => (
+						<CartItem 
+							key={ item.id }
+							item={ item } 
+							// productID={ item.id }
+						/>
+					)) }
+				</Table.Body>
+			</Table>
 		</div>
 	)
 }
 
-export default Checkout;
+let mapStateToProps = (state) => ({
+	warehouse: state.warehouse,
+	items: state.cart.items
+});
+
+export default connect(mapStateToProps)(Checkout);

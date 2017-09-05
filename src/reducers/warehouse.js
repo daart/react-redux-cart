@@ -1,3 +1,5 @@
+import { CART_ADD, CART_REMOVE, CREATE_NEW, CART_INC, CART_DEC, DELETE_PROD } from '../actions/constants';
+
 const defaultState = {
 	[(Math.random() * 10).toPrecision(5)]: {
 		title: '42" Samsung smart TV',
@@ -23,6 +25,59 @@ const defaultState = {
 
 export default (state = defaultState, action) => {
 	switch(action.type) {
+		case CART_ADD:
+			{
+				let { product, productID } = action.payload;
+
+				return {
+					...state,
+					[productID]: {...state[productID], qty: state[productID].qty - 1 }
+				}	
+			}
+		case CART_REMOVE: 
+			{
+				let { qty, productID } = action.payload;
+
+				return {
+					...state,
+					[productID]: {...state[productID], qty: state[productID].qty + qty }
+				}
+			}
+		case CREATE_NEW:
+			{	
+				let { title, qty, price } = action.payload;
+
+				return {
+					...state,
+					[(Math.random() * 10).toPrecision(5)]: { title, price, qty }
+			}}
+		case CART_INC:
+			{
+				let { itemID } = action.payload;
+
+				return {
+					...state,
+					[itemID]: {...state[itemID], qty: state[itemID].qty - 1 }
+				}
+			}
+		case CART_DEC:
+			{
+				let { itemID } = action.payload;
+
+				return {
+					...state,
+					[itemID]: {...state[itemID], qty: state[itemID].qty + 1 }
+				}
+			}
+		// case DELETE_PROD:
+		// 	{
+		// 		let { productID } = action.payload;
+
+		// 		return Object.assign({}, Object.keys(state).reduce((prev, next) => (
+		// 				next !== productID ? {...prev, [next]: state[next]} : prev	
+		// 			), {})
+		// 		)
+		// 	}
 		default:
 			return state;
 	}

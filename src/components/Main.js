@@ -6,6 +6,8 @@ import Checkout from './Checkout';
 import Home from './Home';
 import Shop from './Shop';
 import AddNewProduct from './AddNewProduct';
+import Totals from './Totals';
+import Product from './Product';
 
 const Main = () => {
 	return (
@@ -25,8 +27,14 @@ const Main = () => {
 					/>
 
 					<Route 
+						exact
 						path="/shop"
 						component={ Shop }
+					/>
+
+					<Route 
+						path="/shop/:id"
+						component={ Product }
 					/>
 
 					<Route 
@@ -41,6 +49,10 @@ const Main = () => {
 				</Switch>
 
 			</Grid.Column>
+
+				<Grid.Column width={6}>
+					<Totals />
+				</Grid.Column>
 		</Grid>
 	);
 }
